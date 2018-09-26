@@ -1,0 +1,19 @@
+
+
+#intro{
+    background: url("/img/background-balance-business-583846.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 600px;
+}
+.submit-btn{
+    margin-top: 12px;
+}
+.btn-spacing{
+    margin-top: 18px;
+}
+.spacing-top{
+    margin-top: 15px;
+}
