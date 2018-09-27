@@ -99,7 +99,7 @@
 
                             <!-- description -->
                             <h6 class="my-4 font-weight-bold">Are you a Content writer, developer, or digital marketer?</h6>
-                            <a href="{{ url('/login') }}" class="btn btn-outline-white btn-rounded">Get Started<i class="fa fa-book m1-2"></i></a>
+                            <a href="{{ route('login') }}" class="btn btn-outline-white btn-rounded">Get Started<i class="fa fa-book m1-2"></i></a>
                         </div>
                     </div>
                 </div>
