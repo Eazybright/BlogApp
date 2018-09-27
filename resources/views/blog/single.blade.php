@@ -61,21 +61,5 @@
                 {!! Form::close() !!}
             </div>
         </div>
-        {{-- <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                @foreach($post->comments as $comment)
-                    <div class="author-info">
-                        <img src="" class="author-image">
-                        <div class="author-name">
-                            {{ $comment->name }}
-                            {{ $comment->created_at }}
-                        </div>
-                    </div>
-                    <div class="comment-content">
-                        {{ $comment->comment}}
-                    </div>
-                @endforeach
-            </div>
-        </div> --}}
     </div>
 @endsection
