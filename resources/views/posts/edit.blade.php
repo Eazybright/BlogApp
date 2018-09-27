@@ -7,11 +7,11 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container spacing-bottom">
         <div class="row">
-            <h1 class="lead">Update Blog Post</h1>
-            {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
-                <div class="col-md-8">
+            <div class="col-md-8">
+                <h1 class="text-center page-header">Update Blog - {{ $post->title }}t</h1>
+                {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
                     {{ Form::label('title', 'Title:') }}
                     {{ Form::text('title', null, ['class' => 'form-control']) }}
 
@@ -26,30 +26,32 @@
 
                     {{ Form::label('body', 'Body:', ['class' => 'spacing-top'])}}
                     {{ Form::textarea('body',null, ['class' => 'form-control']) }}
-                </div>
-                <div class="col-md-4">
-                    <div class="well">
-                        <dl class="dl-horizontal">
-                            <label>Created At:</label>
-                            <p>{{ date('M j, Y H:ia', strtotime($post->created_at)) }}</p>
-                        </dl>
-                        <dl class="dl-horizontal">
-                            <label>Updated At:</label>
-                            <p>{{ date('M j, Y H:ia', strtotime($post->updated_at)) }}</p>
-                        </dl>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-6">
-                                {!! Html::linkRoute('posts.show', 'Cancel', array($post->id), ['class' => 'btn btn-danger btn-block']) !!}
-                            </div>
-                            <div class="col-md-6">
-                                {{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block']) }}
-                            </div>
+            </div>
+        
+            <div class="col-md-4 spacing-top">
+                <div class="well">
+                    <dl class="dl-horizontal">
+                        <label>Created At:</label>
+                        <p>{{ date('M j, Y H:ia', strtotime($post->created_at)) }}</p>
+                    </dl>
+                    <dl class="dl-horizontal">
+                        <label>Updated At:</label>
+                        <p>{{ date('M j, Y H:ia', strtotime($post->updated_at)) }}</p>
+                    </dl>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {!! Html::linkRoute('posts.show', 'Cancel', array($post->id), ['class' => 'btn btn-danger']) !!}
+                        </div>
+                        <div class="col-sm-6">
+                            {{ Form::submit('Save Changes', ['class' => 'btn btn-success']) }}
                         </div>
                     </div>
                 </div>
-            {!! Form::close() !!}
+            </div>
         </div>
+                
+                    {!! Form::close() !!}
     </div>    
     
 @endsection

@@ -10,7 +10,7 @@
 @section('content')
         <div class="row">
             <div class="col md-8 col-md-offset-2">
-                <h1>Create New Post</h1>
+                <h1 class="text-center font-weight-bold page-header">Create New Post</h1>
                 <hr>
                 {{ csrf_field() }}
     
@@ -38,11 +38,11 @@
                     {{ Form::label('body', 'Body:')}}
                     {{ Form::textarea('body', null, ['class' => 'form-control', 'required' => ''])}}
     
-                    {{ Form::submit('Create Post', ['class' => 'btn btn-success btn-block btn-lg submit-btn'])}}
+                    {{ Form::submit('Create Post', ['class' => 'btn btn-info spacing-top'])}}
                 {!! Form::close() !!}
             </div>
         </div>
-    
+        <hr>
 @endsection
 
 @section('scripts')

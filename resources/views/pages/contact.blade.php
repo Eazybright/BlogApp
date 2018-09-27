@@ -25,7 +25,7 @@
                         <textarea id="message" name="message" class="form-control" placeholder="Type your message here....."></textarea>
                     </div>
 
-                    <input type="submit" value="Send Message" class="btn btn-success">
+                    <input type="submit" value="Send Message" class="btn btn-success fa fa-send">
                 </form>
             </div>
         </div>

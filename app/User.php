@@ -27,21 +27,4 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function VerifyUser()
-    {
-        return $this->hasOne('App\VerifyUser');
-    }
-
-    // user token relations
-    public function tokens()
-    {
-        return $this->hasMany(Token::class);
-    }
-
-    //return the phone number and contry code concatenated
-    public function getPhoneNumber()
-    {
-        return $this->country_code.$this->phone;
-    }
-
 }

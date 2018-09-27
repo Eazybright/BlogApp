@@ -10,6 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('send_test_email', function(){
+	Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
+	{
+		$message->to('doneazy911@gmail.com');
+	});
+});
 
 Route::group(['middleware' => 'web'], function(){
     //facebook authentication route
@@ -28,6 +34,9 @@ Route::group(['middleware' => 'web'], function(){
     
     //posts route
     Route::resource('posts', 'PostController');
+
+    //comments route
+    Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
 
     //categories route
     Route::resource('categories', 'CategoryController', ['except' => 'create']);

@@ -11,7 +11,7 @@
                 <hr>
                 <div class="tags">
                     @foreach($post->tags as $tag)
-                        <span class="label label-default">{{ $tag->name}}</span>
+                        <span class="label label-default">Tag:{{ $tag->name}}</span>
                     @endforeach
                 </div>
                 
@@ -37,20 +37,20 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-6">
-                            {!! Html::linkRoute('posts.edit', 'Edit', [$post->id], ['class' => 'btn btn-primary btn-block']) !!}
+                            {!! Html::linkRoute('posts.edit', 'Edit', [$post->id], ['class' => 'btn btn-elegant']) !!}
                         </div>
                         <div class="col-md-6">
                             {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'DELETE']) !!}
-                                {{ Form::submit('Delete', ['class' => 'btn btn-danger btn-block'])}}
+                                {{ Form::submit('Delete', ['class' => 'btn btn-danger', 'type' => 'button'])}}
                             {!! Form::close() !!}
                         </div><br />
                         <div class="col-md-12">
-                            {!! Html::linkRoute('posts.index', '<< See All Posts', array(), ['class' => 'btn btn-default btn-block spacing-top']) !!}
+                            {!! Html::linkRoute('posts.index', '<< See All Posts', array(), ['class' => 'btn btn-default btn-block spacing-top', 'style' => 'margin-bottom: 10px;']) !!}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>    
+    </div><hr>
     
 @endsection

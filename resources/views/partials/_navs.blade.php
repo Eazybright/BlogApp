@@ -1,6 +1,6 @@
 
 <!-- Main navigation -->
-<header>
+<header class=" spacing-bottom">
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg grey-light indigo lighten-5 fixed-top scrolling-navbar">
         <!-- container -->
@@ -45,7 +45,7 @@
                     <!-- Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ auth::user()->name }}
+                            <i class="fa fa-user">   {{ auth::user()->name }}</i>
                         </a>
                         <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="{{ url('/posts') }}">Dashboard</a>
@@ -70,4 +70,3 @@
         </div><!--/.container-fluid -->
     </nav><!--end of nav-bar -->
 </header>
-<br><br><br><br><br>
