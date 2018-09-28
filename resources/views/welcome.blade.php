@@ -7,6 +7,7 @@
 
         <title>BlogApp | Welcome</title>
 
+        <link rel="icon" href="{{ asset('img/icon.png') }}">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -92,13 +93,13 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-20 text-center">
                             <!-- heading -->
-                            <h2 class="display-3 font-bold mb-2">BlogApp</h2>
+                            <h2 class="display-3 font-bold mb-2 text-info">BlogApp</h2>
 
                             <!-- divider -->
                             <hr class="hr-light">
 
                             <!-- description -->
-                            <h6 class="my-4 font-weight-bold">Are you a Content writer, developer, or digital marketer?</h6>
+                            <h6 class="my-4 font-weight-bold text-info">Are you a Content writer, developer, or digital marketer?</h6>
                             <a href="{{ route('login') }}" class="btn btn-outline-white btn-rounded">Get Started<i class="fa fa-book m1-2"></i></a>
                         </div>
                     </div>

@@ -148,6 +148,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         'Aloha\Twilio\Support\Laravel\ServiceProvider',
+        Mews\Purifier\PurifierServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -213,7 +214,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Twilio' => 'Aloha\Twilio\Support\Laravel\Facade',
-
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
     ],
 
 ];

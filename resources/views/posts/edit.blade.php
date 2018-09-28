@@ -10,8 +10,8 @@
     <div class="container spacing-bottom">
         <div class="row">
             <div class="col-md-8">
-                <h1 class="text-center page-header">Update Blog - {{ $post->title }}t</h1>
-                {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
+                <h1 class="text-center page-header">Update Blog - {{ $post->title }}</h1>
+                {{ Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) }}
                     {{ Form::label('title', 'Title:') }}
                     {{ Form::text('title', null, ['class' => 'form-control']) }}
 
@@ -25,7 +25,7 @@
                     {{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) }}
 
                     {{ Form::label('body', 'Body:', ['class' => 'spacing-top'])}}
-                    {{ Form::textarea('body',null, ['class' => 'form-control']) }}
+                    {{ Form::textarea('body',null, ['class' => 'form-control editor']) }}
             </div>
         
             <div class="col-md-4 spacing-top">
@@ -51,7 +51,7 @@
             </div>
         </div>
                 
-                    {!! Form::close() !!}
+                {{ Form::close() }}
     </div>    
     
 @endsection
@@ -62,5 +62,13 @@
     <script type="text/javascript">
         $('.select2-multi').select2();
         $('.select2-multi').select2().val({!! json_encode($post->tags()->allRelatedIds()) !!}).trigger('change');
+    </script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+    <script type="text/javascript">
+        ClassicEditor
+        .create( document.querySelector( '.editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
     </script>
 @endsection

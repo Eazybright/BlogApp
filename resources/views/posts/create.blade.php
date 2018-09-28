@@ -26,17 +26,17 @@
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}
                         @endforeach
-                    </select>
+                    </select><br>
 
                     {{ Form::label('tags', 'Tags:') }}
-                    <select class="form-control select2-multi" name="tags[]" multiple="multiple">
+                    <select class="form-control select2-multi spacing-bottom" name="tags[]" multiple style="clear:right;">
                         @foreach($tags as $tag)
                             <option value="{{ $tag->id }}">{{ $tag->name }}
                         @endforeach
-                    </select>
+                    </select><br>
     
                     {{ Form::label('body', 'Body:')}}
-                    {{ Form::textarea('body', null, ['class' => 'form-control', 'required' => ''])}}
+                    {{ Form::textarea('body', null, ['class' => 'form-control editor'])}}
     
                     {{ Form::submit('Create Post', ['class' => 'btn btn-info spacing-top'])}}
                 {!! Form::close() !!}
@@ -51,5 +51,14 @@
 
     <script type="text/javascript">
         $('.select2-multi').select2();
+    </script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+    <script type="text/javascript">
+        ClassicEditor
+        .create( document.querySelector( '.editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
     </script>
 @endsection

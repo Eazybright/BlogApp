@@ -41,7 +41,18 @@
 }
 .comment-content{
     clear: both;
-    margin-left: 65px;
+    margin-left: 85px;
     font-size: 16px;
     line-height: 1.3em;
+}
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: auto;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+  }
+  
+.pagination li {
+    display: block;
 }

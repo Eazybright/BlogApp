@@ -10,13 +10,14 @@
         "authy/php": "3.0",
         "doctrine/dbal": "^2.8",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
         "laravel/framework": "5.6.*",
         "laravel/socialite": "^3.1",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
+        "mews/purifier": "^2.1",
         "s-ichikawa/laravel-sendgrid-driver": "^2.0",
-        "twilio/sdk": "^5.22",
-        "guzzlehttp/guzzle": "~5.3|~6.0"
+        "twilio/sdk": "^5.22"
     },
     "require-dev": {
         "filp/whoops": "^2.0",

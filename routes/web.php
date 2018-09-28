@@ -37,6 +37,10 @@ Route::group(['middleware' => 'web'], function(){
 
     //comments route
     Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
+    Route::get('comments/{id}/edit', ['uses' => 'CommentController@edit', 'as' => 'comments.edit']);
+    Route::delete('comments/{id}/delete', ['uses' => 'CommentController@destroy', 'as' => 'comments.destroy']);
+    Route::put('comments/{id}', ['uses' => 'CommentController@update', 'as' => 'comments.update']);
+    Route::get('comments/{id}/delete', ['uses' => 'CommentController@delete', 'as' => 'comments.delete']);
 
     //categories route
     Route::resource('categories', 'CategoryController', ['except' => 'create']);

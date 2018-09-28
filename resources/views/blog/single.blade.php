@@ -8,7 +8,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <h1 class="lead">{{ $post->title }}</h1>
                 <strong><p>Published at: {{ date('j M,Y', strtotime($post->created_at)) }}</p></strong>
-                <p>{{ $post->body }}</p>
+                <p>{!! $post->body !!}</p>
                 <hr>
                 <p>Category: {{ $post->category->name }}</p>
             </div>
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                         <div class="comment-content">
-                            <p>{{ $comment->comment }}</p>
+                            <p>{!! $comment->comment !!}</p>
                         </div>
                     </div>
                 @endforeach
@@ -52,7 +52,7 @@
                          </div>
                          <div class="col-md-12">
                             {{ Form::label('comment', 'Comment:') }}
-                            {{ Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '5']) }}
+                            {{ Form::textarea('comment', null, ['class' => 'form-control editor', 'rows' => '5']) }}
 
                             {{ Form::submit('Add Comment', ['class' => 'btn btn-success spacing-top']) }}
 
@@ -62,4 +62,15 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+    <script type="text/javascript">
+        ClassicEditor
+        .create( document.querySelector( '.editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script>
 @endsection

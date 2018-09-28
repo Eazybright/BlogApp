@@ -6,9 +6,14 @@ use Illuminate\Http\Request;
 use App\Comment;
 use App\Post;
 use Session;
+use Purifier;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'store']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -48,7 +53,7 @@ class CommentController extends Controller
 
         $comments->name = $request->name;
         $comments->email = $request->email;
-        $comments->comment = $request->comment;
+        $comments->comment = Purifier::clean($request->comment);
         $comments->approved = true;
         $comments->post()->associate($post);
         $comments->save();
@@ -78,7 +83,8 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('comments/edit')->with('comment', $comment);        
     }
 
     /**
@@ -90,7 +96,23 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comments = Comment::find($id)->first();
+
+        $this->validate($request, array(
+            'comment' => 'required',
+        ));
+        $comments->comment = Purifier::clean($request->comment);
+        $comments->save();
+
+        Session::flash('successs', 'Comment has been updated');
+
+        return redirect()->route('posts.show', $comments->id)->with('success', 'comment has been updated');
+    }
+
+    public function delete($id)
+    {
+        $comment = Comment::find($id);
+        return view('comments/delete')->with('comment', $comment);
     }
 
     /**
@@ -101,6 +123,12 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment = Comment::find($id);
+        $post_id =  $comment->id;
+        $comment->delete();
+
+        Session::flash('success', 'Your comment was deleted!');
+
+        return redirect()->route('posts.index');
     }
 }
