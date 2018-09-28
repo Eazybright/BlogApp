@@ -14,14 +14,14 @@
                 <hr>
                 {{ csrf_field() }}
     
-                {!!  Form::open(['route' => 'posts.store', 'data-parsley-validate' => '']) !!}
-                    {{ Form::label('title', 'Title:')}}
+                {!!  Form::open(['route' => 'posts.store', 'data-parsley-validate' => '', 'files' => true]) !!}
+                    {{ Form::label('title', 'Title:', ['class'=> 'spacing-top'])}}
                     {{ Form::text('title', null, ['class' => 'form-control', 'required' => '', 'maxlength' => '255']) }}
 
-                    {{ Form::label('slug', 'Slug:') }}
+                    {{ Form::label('slug', 'Slug:', ['class'=> 'spacing-top']) }}
                     {{ Form::text('slug', null, ['class' => 'form-control', 'required' => '', 'minlength' => '5', 'maxlength' => '255']) }}
 
-                    {{ Form::label('category', 'Category:') }}
+                    {{ Form::label('category', 'Category:', ['class'=> 'spacing-top']) }}
                     <select class="form-control" name="category_id">
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}
@@ -34,8 +34,11 @@
                             <option value="{{ $tag->id }}">{{ $tag->name }}
                         @endforeach
                     </select><br>
-    
-                    {{ Form::label('body', 'Body:')}}
+                    
+                    {{ Form::label('image', 'Upload Image:', ['class'=> 'spacing-top']) }}
+                    {{ Form::file('image', ['class' => 'form-control ']) }}
+
+                    {{ Form::label('body', 'Body:', ['class'=> 'spacing-top'])}}
                     {{ Form::textarea('body', null, ['class' => 'form-control editor'])}}
     
                     {{ Form::submit('Create Post', ['class' => 'btn btn-info spacing-top'])}}

@@ -8,6 +8,9 @@
             <div class="col-md-8">
                 <h1>{{ $post->title }}</h1>
                 <p class="lead">{!! $post->body !!}</p>
+                @if(isset($post->image))
+                    <img src="{{ asset('storage/images/'.$post->image) }}" class="img-fluid" alt="image" width="50%" height="50%">
+                @endif
                 <hr>
                 <div class="tags">
                     @foreach($post->tags as $tag)

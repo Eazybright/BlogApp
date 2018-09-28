@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'BlogApp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -149,6 +149,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         'Aloha\Twilio\Support\Laravel\ServiceProvider',
         Mews\Purifier\PurifierServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -215,6 +216,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Twilio' => 'Aloha\Twilio\Support\Laravel\Facade',
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
     ],
 
 ];

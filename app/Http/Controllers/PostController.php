@@ -8,6 +8,7 @@ use App\Category;
 use App\Tag;
 use Session;
 use Purifier;
+use Image;
 
 class PostController extends Controller
 {
@@ -55,7 +56,21 @@ class PostController extends Controller
             'body' => 'required',
             'slug' => 'required|min:5|max:255|alpha_dash|unique:posts,slug',
             'category_id' => 'required|integer',
+            'image' => 'required|image|max:1999|mimes:jpeg,jpg,bmp,png,gif'
         ));
+        if($request->hasFile('image')){        
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);            
+           // Get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;                       
+          // Upload Image
+            $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+        }else {
+            $fileNameToStore = 'noimage.jpg';
+        }
         //store into the database
         $post = new Post;
         $post->title = $request->title;
@@ -63,6 +78,8 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->category_id = $request->category_id;
         $post->user_id = auth()->user()->id;
+        $post->image = $fileNameToStore;
+        
         $post->save();
 
         $post->tags()->sync($request->tags, false);
