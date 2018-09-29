@@ -9,7 +9,7 @@
                 <h1>{{ $post->title }}</h1>
                 <p class="lead">{!! $post->body !!}</p>
                 @if(isset($post->image))
-                    <img src="{{ asset('storage/images/'.$post->image) }}" class="img-fluid" alt="image" width="50%" height="50%">
+                    <img src="{{ asset('storage/images/'.$post->image) }}" class="img-fluid img-thumbnail rounded" alt="image" width="50%" height="50%">
                 @endif
                 <hr>
                 <div class="tags">
@@ -73,7 +73,7 @@
                             {!! Form::close() !!}
                         </div><br />
                         <div class="col-md-12">
-                            {!! Html::linkRoute('posts.index', '<< See All Posts', array(), ['class' => 'btn btn-default 
+                            {!! Html::linkRoute('blog.index', '<< See All Posts', array(), ['class' => 'btn btn-default 
                                 btn-block spacing-top', 'style' => 'margin-bottom: 10px;']) !!}
                         </div>
                     </div>

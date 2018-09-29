@@ -29,7 +29,7 @@
                     <!-- Collapse button -->
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
                         aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+                        <span class="fa fa-bars text-dark"></span>
                     </button>
 
                     <!-- Collapsible content -->
@@ -66,7 +66,7 @@
                                     {{ auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="{{ url('/home') }}">Dashboard</a>
+                                    <a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
                                     <a class="dropdown-item" href="{{ route('posts.index') }}">Posts</a>
                                     <a class="dropdown-item"  href="{{ route('categories.index') }}">Categories</a>
                                     <a class="dropdown-item" href="{{ route('tags.index') }}">Tags</a>

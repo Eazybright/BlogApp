@@ -48,7 +48,8 @@ Route::group(['middleware' => 'web'], function(){
     //tags route
     Route::resource('tags', 'TagController', ['except' => 'create']);
 
-    // Route::post('send-mail', 'MailController@sendMail')->name('mail');
+    //dashboard route
+    Route::get('dashboard', 'DashboardController@getIndex');
     
 });
 
