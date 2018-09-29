@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-8">
                 <h1 class="text-center page-header">Update Blog - {{ $post->title }}</h1>
-                {{ Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) }}
+                {{ Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT', 'files' => true]) }}
                     {{ Form::label('title', 'Title:') }}
                     {{ Form::text('title', null, ['class' => 'form-control']) }}
 
@@ -23,6 +23,9 @@
 
                     {{ Form::label('tags', 'Tags:') }}
                     {{ Form::select('tags[]', $tags, null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) }}
+
+                    {{ Form::label('image', 'Upload Image:', ['class'=> 'spacing-top']) }}
+                    {{ Form::file('image', ['class' => 'form-control ']) }}
 
                     {{ Form::label('body', 'Body:', ['class' => 'spacing-top'])}}
                     {{ Form::textarea('body',null, ['class' => 'form-control editor']) }}

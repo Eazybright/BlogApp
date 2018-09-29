@@ -9,6 +9,7 @@ use App\Tag;
 use Session;
 use Purifier;
 use Image;
+use Storage;
 
 class PostController extends Controller
 {
@@ -135,31 +136,46 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
+        //validate the updated blog post data
+        $this->validate($request, array(
+            'title' => 'required:max:255',
+            'slug' => 'required|min:5|max:255|alpha_dash|unique:posts,slug',
+            'category_id' => 'required|integer',
+            'body' => 'required',
+            'image' => 'image|max:1999|mimes:jpeg,jpg,bmp,png,gif'
+        ));
         $post = Post::find($id);
-        //check if the slug is unique
-        if($request->input('slug') == $post->id){
-            $this->validate($request, array(
-                'title' => 'required:max:255',
-                'category_id' => 'required|integer',
-                'body' => 'required',
-            ));
-        }else{
-            //validate the updated blog post data
-            $this->validate($request, array(
-                'title' => 'required:max:255',
-                'slug' => 'required|min:5|max:255|alpha_dash|unique:posts,slug',
-                'category_id' => 'required|integer',
-                'body' => 'required',
-            ));
-        }
-        
         //update the database
         $post->title = $request->input('title');
         $post->body = Purifier::clean($request->input('body'));
         $post->slug = $request->input('slug');
         $post->category_id = $request->input('category_id');
 
+
+        if($request->hasFile('image')){        
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);            
+            // Get just ext
+            $extension = $request->file('image')->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;                       
+            // Upload Image
+            $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+            
+            $oldImage = $post->image;
+
+            $post->image = $fileNameToStore;
+
+            Storage::delete($oldImage);
+
+        }else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         $post->save();
+
         if(isset($request->tags)){
             $post->tags()->sync($request->tags);
         }else{
@@ -182,6 +198,7 @@ class PostController extends Controller
         //delete a particular post
         $post = Post::find($id);
         $post->tags()->detach();
+        Storage::delete($post->image);
         $post->delete();
 
         Session::flash('success', 'Your post was deleted!');
