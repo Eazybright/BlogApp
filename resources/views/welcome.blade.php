@@ -69,10 +69,6 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
-                                    <a class="dropdown-item" href="{{ route('posts.index') }}">Posts</a>
-                                    <a class="dropdown-item"  href="{{ route('categories.index') }}">Categories</a>
-                                    <a class="dropdown-item" href="{{ route('tags.index') }}">Tags</a>
-                                    <a class="dropdown-item" href="#">Settings</a>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">

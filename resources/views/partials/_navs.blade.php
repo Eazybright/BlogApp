@@ -9,7 +9,7 @@
             <a class="navbar-brand" href="/">BlogApp</a>
 
             <!-- Collapse button -->
-            <button class="navbar-toggler fa fa-bars text-dark" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="fa fa-bars text-dark"></span>
             </button>
