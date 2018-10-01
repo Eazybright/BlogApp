@@ -40,10 +40,10 @@
                     <a href="{{ route('posts.create') }}"><span class="fa fa-user-plus"></span> Add Post</a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-certificate"></span> Categories </a>
+                    <a href="{{ route('categories.index') }}"><span class="fa fa-certificate"></span> Categories </a>
                 </li>
                 <li>
-                    <a href="#"><span class="fa fa-tags"></span> Tags </a>
+                    <a href="{{ route('tags.index') }}"><span class="fa fa-tags"></span> Tags </a>
                 </li>
                 <li>
                     <a href="#"><span class="fa fa-user-md"></span> Edit Profile</a>

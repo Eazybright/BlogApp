@@ -46,6 +46,6 @@ class PagesController extends Controller
         });
         Session::flash('success', 'Your email was sent successfully');
 
-        return redirect('/');
+        return redirect('/')->with('sucess', 'Your email has been sent successfully');
     }
 }

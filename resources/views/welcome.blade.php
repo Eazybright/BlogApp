@@ -55,6 +55,8 @@
 
                         {{-- right nav bar --}}
                         <ul class="nav-item dropdown navbar-nav navbar-right">
+
+                            @include('partials._messages')
                             <!-- Authentication Links -->
                             @if (Auth::guest())
                                 <li class="nav-item"><a class="nav-link" href="{{ url('/login') }}">Login</a></li>
@@ -210,34 +212,28 @@
                     <div class="row">
                         <!-- grid column -->
                         <div class="col-lg-5 col-md-12">
-                            <form class="p-5">
-                                <div class="md-form form-md">
-                                    <i class="fa fa-user prefix grey-text"></i>
-                                    <input type="text" id="name" class="form-control">
-                                    <label for="name">Your name</label>
-                                </div>
-
+                            <form action="{{ url('contact') }}" method="POST" class="p-5">
+                                {{ csrf_field() }}
                                 <div class="md-form form-md">
                                     <i class="fa fa-envelope prefix grey-text"></i>
-                                    <input type="email" id="email" class="form-control">
-                                    <label for="email">Email address</label>
+                                    <input type="email" id="email" name="email" class="form-control">
+                                    <label name="email">Email address</label>
                                 </div>
 
                                 <div class="md-form form-md">
                                     <i class="fa fa-tag prefix grey-text"></i>
-                                    <input type="text" id="subject" class="form-control">
-                                    <label for="subject">Subject</label>
+                                    <input type="text" id="subject" name="subject" class="form-control">
+                                    <label name="subject">Subject</label>
                                 </div>
 
                                 <div class="md-form form-md">
                                     <i class="fa fa-pencil prefix grey-text"></i>
-                                    <textarea type="text" id="message" class="md-textarea" style="height: 100px;"></textarea>
-                                    <label for="message">Message</label>
+                                    <textarea type="text" id="message" name="message" class="md-textarea" style="height: 100px;"></textarea>
+                                    <label name="message">Message</label>
                                 </div>
-
-                                <div class="text-center">
-                                    <button type="button" class="btn btn-success">Send<i class="fa fa-paper-plane ml-2"></i></button>
-                                </div>
+                                    
+                                <input type="submit" value="Send" class="btn btn-success text-center fa fa-paper-plane ml-2">
+                                
                             </form>
                         </div>
                         <!-- grid column -->
