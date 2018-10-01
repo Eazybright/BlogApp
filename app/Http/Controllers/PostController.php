@@ -57,7 +57,7 @@ class PostController extends Controller
             'body' => 'required',
             'slug' => 'required|min:5|max:255|alpha_dash|unique:posts,slug',
             'category_id' => 'required|integer',
-            'image' => 'required|image|max:1999|mimes:jpeg,jpg,bmp,png,gif'
+            'image' => 'image|max:1999|mimes:jpeg,jpg,bmp,png,gif'
         ));
         if($request->hasFile('image')){        
             $filenameWithExt = $request->file('image')->getClientOriginalName();
