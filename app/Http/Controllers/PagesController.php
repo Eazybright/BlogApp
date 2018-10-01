@@ -13,8 +13,8 @@ class PagesController extends Controller
 {
     //
     public function getIndex(){
-        $post = Post::orderBy('created_at', 'desc')->limit(4)->get();
-        return view('welcome')->with('post', $post);
+        // $post = Post::orderBy('created_at', 'desc')->limit(4)->get();
+        return view('welcome');
     }
 
     public function getAbout(){
