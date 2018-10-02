@@ -10,8 +10,13 @@ BlogApp is a online platform for blog post. It allows users to view blog posts a
 BlogApp allows authenticated users to do the following;
 
 - register your account
+<p><img src="http://eazyblog.herokuapp.com/screenshots/register.png"></p>
 - add blog post
+<p><img src="http://eazyblog.herokuapp.com/screenshots/editPost.png"></p>
 - update blog post
+<p><img src="http://eazyblog.herokuapp.com/screenshots/updatePost.png"></p>
 - add categories and tags
+<p><img src="http://eazyblog.herokuapp.com/screenshots/categories.png"></p>
 - comment on blog posts
+<p><img src="http://eazyblog.herokuapp.com/screenshots/comment.png"></p>
 - and lots more.
