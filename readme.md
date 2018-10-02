@@ -1,4 +1,4 @@
-<p align="center"><img src="https://eazyblog.herokuapp.com/icon.png" width="10%" height="10%"></p>
+<p align="center"><img src="https://eazyblog.herokuapp.com/img/icon.png" width="10%" height="10%"></p>
 
 <p align="center">BlogApp</p>
 
@@ -6,7 +6,7 @@
 
 BlogApp is a online platform for blog post. It allows users to view blog posts and comment on it.
 
-##BlogApp Features
+## BlogApp Features
 BlogApp allows authenticated users to do the following;
 
 - register your account
