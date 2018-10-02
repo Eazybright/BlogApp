@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h1 class="lead">{{ $post->title }}</h1>
+                <strong><h1 class="lead">{{ $post->title }}</h1></strong>
                 <strong><p>Published at: {{ date('j M,Y', strtotime($post->created_at)) }}</p></strong>
                 <p>{!! $post->body !!}</p>
                 <hr>
