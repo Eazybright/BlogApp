@@ -9,7 +9,7 @@
                 <h1>{{ $post->title }}</h1>
                 <p class="lead">{!! $post->body !!}</p>
                 @if(isset($post->image))
-                    <img src="{{ asset('storage/app/public/images/'.$post->image) }}" class="img-fluid img-thumbnail rounded" alt="image" width="50%" height="50%">
+                    <img src="{{ asset('storage/images/'.$post->image) }}" class="img-fluid img-thumbnail rounded" alt="image" width="50%" height="50%">
                 @endif
                 <hr>
                 <div class="tags">
