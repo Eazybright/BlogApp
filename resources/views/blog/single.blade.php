@@ -7,6 +7,9 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <strong><h1 class="lead">{{ $post->title }}</h1></strong>
+                @if(isset($post->image))
+                    <img src="{{ asset('storage/app/public/images/'.$post->image) }}" class="img-fluid img-thumbnail rounded" alt="image" width="50%" height="50%">
+                @endif
                 <strong><p>Published at: {{ date('j M,Y', strtotime($post->created_at)) }}</p></strong>
                 <p>{!! $post->body !!}</p>
                 <hr>
