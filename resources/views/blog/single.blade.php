@@ -10,7 +10,7 @@
                 <strong><p>Published at: {{ date('j M,Y', strtotime($post->created_at)) }}</p></strong>
                 <p>{!! $post->body !!}</p>
                 <hr>
-                <p>Category: {{ $post->category->name }}</p>
+                <p class="badge badge-pill indigo">{{ $post->category->name }}</p>
             </div>
         </div>
         <hr>
