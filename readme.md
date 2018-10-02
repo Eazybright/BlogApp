@@ -16,7 +16,7 @@ BlogApp allows authenticated users to do the following;
 - update blog post
 <p><img src="http://eazyblog.herokuapp.com/screenshots/updatePost.png"></p>
 - add categories and tags
-<p><img src="http://eazyblog.herokuapp.com/screenshots/categories.png"></p>
+<p><img src="http://eazyblog.herokuapp.com/screenshots/category.png"></p>
 - comment on blog posts
 <p><img src="http://eazyblog.herokuapp.com/screenshots/comment.png"></p>
 - and lots more.
