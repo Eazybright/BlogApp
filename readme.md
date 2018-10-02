@@ -12,7 +12,7 @@ BlogApp allows authenticated users to do the following;
 - register your account
 <p><img src="http://eazyblog.herokuapp.com/screenshots/register.png"></p>
 - add blog post
-<p><img src="http://eazyblog.herokuapp.com/screenshots/editPost.png"></p>
+<p><img src="http://eazyblog.herokuapp.com/screenshots/create.png"></p>
 - update blog post
 <p><img src="http://eazyblog.herokuapp.com/screenshots/updatePost.png"></p>
 - add categories and tags
