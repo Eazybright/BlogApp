@@ -162,7 +162,7 @@ class PostController extends Controller
             //Filename to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension;                       
             // Upload Image
-            $path = $request->file('image')->storeAs('public/images', $fileNameToStore);
+            $path = $request->file('image')->storeAs('/images', $fileNameToStore);
             
             $oldImage = $post->image;
 
