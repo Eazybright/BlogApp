@@ -151,6 +151,7 @@ return [
         'Aloha\Twilio\Support\Laravel\ServiceProvider',
         Mews\Purifier\PurifierServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        'JD\Cloudder\CloudderServiceProvider',
 
         /*
          * Package Service Providers...
@@ -219,6 +220,7 @@ return [
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Input' => Illuminate\Support\Facades\Input::class,
+        'Cloudder' => 'JD\Cloudder\Facades\Cloudder',
     ],
 
 ];

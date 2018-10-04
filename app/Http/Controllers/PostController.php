@@ -10,6 +10,9 @@ use Session;
 use Purifier;
 use Image;
 use Storage;
+use Cloudder;
+use App\User;
+use Auth;
 
 class PostController extends Controller
 {
@@ -26,9 +29,15 @@ class PostController extends Controller
     public function index()
     {
         //find all data from the database
-        $posts = Post::orderBy('id', 'desc')->paginate(5);
-
-        return view('posts.index')->with('posts', $posts);
+        if( $user_id = Auth::user()->id ){
+            $posts = Post::where('user_id', $user_id)->orderBy('id', 'desc')->paginate(10);
+            return view('posts/index')->with('posts', $posts);
+        }
+        else{
+            $post = Post();
+            Session::flash('success', 'You have no posts yet');
+            return view('posts/index')->with('post', $post);
+        }
     }
 
     /**
@@ -66,8 +75,7 @@ class PostController extends Controller
            // Get just ext
             $extension = $request->file('image')->getClientOriginalExtension();
             //Filename to store
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;                       
-          // Upload Image
+            $fileNameToStore = $filename.'_'.time().'.'.$extension; 
             $path = $request->file('image')->storeAs('/images', $fileNameToStore);
         }else {
             $fileNameToStore = 'noimage.jpg';
