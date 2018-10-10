@@ -60,6 +60,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $post = new Post;
         //validate the data
         $this->validate($request, array(
             'title' => 'required|max:255',
@@ -77,15 +78,16 @@ class PostController extends Controller
             //Filename to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension; 
             $path = $request->file('image')->storeAs('/images', $fileNameToStore);
+
+            $post->image = $fileNameToStore;
         }
         //store into the database
-        $post = new Post;
+        
         $post->title = $request->title;
         $post->body = Purifier::clean($request->body);
         $post->slug = $request->slug;
         $post->category_id = $request->category_id;
         $post->user_id = auth()->user()->id;
-        $post->image = $fileNameToStore;
         
         $post->save();
 
