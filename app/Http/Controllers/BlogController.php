@@ -9,9 +9,11 @@ class BlogController extends Controller
 {
 
     public function getIndex(){
-        $posts = Post::orderBy('id', 'desc')->paginate(10);
-
-        return view('blog/index')->with('posts', $posts);
+        $posts = new Post;
+        if($posts = Post::where('published', 1)->orderBy('id', 'desc')->paginate(10)){
+            return view('blog/index')->with('posts', $posts);
+        }
+        return view('blog/index');
     }
 
     public function getSingle($slug){

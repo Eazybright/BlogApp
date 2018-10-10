@@ -9,7 +9,7 @@ class Post extends Model
     public $post;
     
     protected $fillable = [
-        'title', 'slug', 'body',
+        'title', 'slug', 'body', 'published'
     ];
 
     public function category()
