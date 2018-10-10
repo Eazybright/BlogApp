@@ -10,6 +10,7 @@
                 <p class="lead">{!! $post->body !!}</p>
                 @if(isset($post->image))
                     <img src="{{ asset('storage/images/'.$post->image) }}" class="img-fluid img-thumbnail rounded" alt="image" width="50%" height="50%">
+                @else
                 @endif
                 <hr>
                 <div class="tags">
