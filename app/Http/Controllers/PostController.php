@@ -159,7 +159,7 @@ class PostController extends Controller
         //validate the updated blog post data
         $this->validate($request, array(
             'title' => 'required:max:255',
-            'slug' => 'required|min:5|max:255|alpha_dash|unique:posts,slug',
+            'slug' => 'required|min:5|max:255|alpha_dash',
             'category_id' => 'required|integer',
             'body' => 'required',
             'image' => 'image|max:1999|mimes:jpeg,jpg,bmp,png,gif'
