@@ -10,7 +10,7 @@ use Session;
 use Purifier;
 use Image;
 use Storage;
-use Cloudder;
+use Cloudinary;
 use App\User;
 use Auth;
 
@@ -70,16 +70,45 @@ class PostController extends Controller
             'image' => 'image|max:1999|mimes:jpeg,jpg,bmp,png,gif'
         ));
         if($request->hasFile('image')){        
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);            
-           // Get just ext
-            $extension = $request->file('image')->getClientOriginalExtension();
-            //Filename to store
-            $fileNameToStore = $filename.'_'.time().'.'.$extension; 
-            $path = $request->file('image')->storeAs('/images', $fileNameToStore);
+        //     $filenameWithExt = $request->file('image')->getClientOriginalName();
+        //     // Get just filename
+        //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);            
+        //    // Get just ext
+        //     $extension = $request->file('image')->getClientOriginalExtension();
+        //     //Filename to store
+            
+        //     $path = $request->file('image')->storeAs('/images', $fileNameToStore);
 
-            $post->image = $fileNameToStore;
+            $image = $request->file('image');
+
+            $name = $request->file('image')->getClientOriginalName();
+
+            $image_name = $request->file('image')->getRealPath();;
+
+            \Cloudinary::config(array( 
+                "cloud_name" => "http-eazyblog-herokuapp-com", 
+                "api_key" => "642468615896558", 
+                "api_secret" => "z6_2SQ6GSjYP6sOyJbOp4GQbQNg",
+              ));
+
+            $result = \Cloudinary\Uploader::upload($image, array(
+                'public_id' => $name,
+                "use_filename" => TRUE
+            ));
+
+            // dd($result);
+            // list($width, $height) = getimagesize($image_name);
+
+            // $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+
+            //save to uploads directory
+            $image->move(public_path("uploads"), $name);
+
+            //Save images
+            // $this->saveImages($request, $image_url);
+
+            $post->image = $name;
+            // $post->image = $image_url;
         }
         //store into the database
         
