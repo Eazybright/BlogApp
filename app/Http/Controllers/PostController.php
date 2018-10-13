@@ -70,14 +70,6 @@ class PostController extends Controller
             'image' => 'image|max:1999|mimes:jpeg,jpg,bmp,png,gif'
         ));
         if($request->hasFile('image')){        
-        //     $filenameWithExt = $request->file('image')->getClientOriginalName();
-        //     // Get just filename
-        //     $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);            
-        //    // Get just ext
-        //     $extension = $request->file('image')->getClientOriginalExtension();
-        //     //Filename to store
-            
-        //     $path = $request->file('image')->storeAs('/images', $fileNameToStore);
 
             $image = $request->file('image');
 
@@ -96,19 +88,9 @@ class PostController extends Controller
                 "use_filename" => TRUE
             ));
 
-            // dd($result);
-            // list($width, $height) = getimagesize($image_name);
-
-            // $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
-
             //save to uploads directory
             $image->move(public_path("uploads"), $name);
-
-            //Save images
-            // $this->saveImages($request, $image_url);
-
             $post->image = $name;
-            // $post->image = $image_url;
         }
         //store into the database
         
@@ -190,25 +172,32 @@ class PostController extends Controller
         $post->category_id = $request->input('category_id');
 
 
-        if($request->hasFile('image')){        
-            $filenameWithExt = $request->file('image')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);            
-            // Get just ext
-            $extension = $request->file('image')->getClientOriginalExtension();
-            //Filename to store
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;                       
-            // Upload Image
-            $path = $request->file('image')->storeAs('/images', $fileNameToStore);
-            
+        if($request->hasFile('image')){
+            $image = $request->file('image');
+
+            $name = $request->file('image')->getClientOriginalName();
+
+            $image_name = $request->file('image')->getRealPath();;
+
+            //save to uploads directory
+            $image->move(public_path("uploads"), $name);
+
+            \Cloudinary::config(array( 
+                "cloud_name" => "http-eazyblog-herokuapp-com", 
+                "api_key" => "642468615896558", 
+                "api_secret" => "z6_2SQ6GSjYP6sOyJbOp4GQbQNg",
+              ));
+
+            $result = \Cloudinary\Uploader::upload($image, array(
+                'public_id' => $name,
+                "use_filename" => TRUE
+            ));
+
             $oldImage = $post->image;
+            $image->delete(public_path("uploads", $oldImage));
 
-            $post->image = $fileNameToStore;
+            $post->image = $name;
 
-            Storage::delete($oldImage);
-
-        }else {
-            $fileNameToStore = 'noimage.jpg';
         }
 
         $post->save();
