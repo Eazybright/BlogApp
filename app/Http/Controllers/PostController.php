@@ -173,6 +173,7 @@ class PostController extends Controller
 
 
         if($request->hasFile('image')){
+
             $image = $request->file('image');
 
             $name = $request->file('image')->getClientOriginalName();
@@ -181,20 +182,6 @@ class PostController extends Controller
 
             //save to uploads directory
             $image->move(public_path("uploads"), $name);
-
-            // \Cloudinary::config(array( 
-            //     "cloud_name" => "http-eazyblog-herokuapp-com", 
-            //     "api_key" => "642468615896558", 
-            //     "api_secret" => "z6_2SQ6GSjYP6sOyJbOp4GQbQNg",
-            //   ));
-
-            // $result = \Cloudinary\Uploader::upload($image, array(
-            //     'public_id' => $name,
-            //     "use_filename" => TRUE
-            // ));
-
-            $oldImage = $post->image;
-            $image->delete(public_path("uploads", $oldImage));
 
             $post->image = $name;
 
