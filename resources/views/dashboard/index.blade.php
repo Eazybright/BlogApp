@@ -78,6 +78,8 @@
                 <div class="container-fluid">
                     <div class="row table-responsive">
                         <div class="col-md-12">
+                            @include('partials._messages')
+
                             <h1 class="text-center">My Posts</h1>
                             <table class="table table-hover">
                                 <thead>

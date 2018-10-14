@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use App\Mail\VerifyMail;
-use App\VerifyUser;
+use Session;
 use Mail;
 use \Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Auth\Guard;
+use App\Events\Auth\UserActivationEmail;
 
 class RegisterController extends Controller
 {
@@ -32,7 +35,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'dashboard';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -71,9 +74,27 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'active' => false,
+            'activation_token' => str_random(100)
         ]);
     }
 
     
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        //sending mail
+        event(new UserActivationEmail($user));
+        
+        $this->guard()->logout();
+
+        return view('auth/loginResend')->with('success', 'Registered!. Please check your email to activate your account.');
+    }    
 
 }

@@ -49,9 +49,13 @@ Route::group(['middleware' => 'web'], function(){
     Route::resource('tags', 'TagController', ['except' => 'create']);
 
     //dashboard route
-    Route::get('dashboard', 'DashboardController@getIndex');
-    
+    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'DashboardController@getIndex']);
+
+    //activate account routes
+    Route::get('auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
+    Route::get('auth/activate/resend', 'Auth\ActivationResendController@showResendForm')->name('auth.activate.resend');
+    Route::post('auth/activate/resend', 'Auth\ActivationResendController@Resend')->name('auth.activate.resend');
+
 });
 
 Auth::routes();
-Route::get('/user/verify/{token}', 'Auth\RegisterController@verifyUser');

@@ -36,4 +36,24 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    protected function resetPassword($user, $password)
+    {
+        $user->password = bcrypt($password);
+
+        $user->setRememberToken(str_random(60));
+
+        $user->save();
+
+        if($user->active){
+            $this->guard()->login($user);
+        }
+    }
+
+    //Get the response for a successful password reset
+    protected function sendResetPassword($response)
+    {
+        return redirect()->route('login')->with('success', 'Your password has been reset successfully');
+    }
+
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Validation\Rule;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'dashboard';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -37,5 +39,25 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => [
+                'required','string',
+                Rule::exists('users')->where(function($query){
+                    $query->where('active', true);
+                })
+            ],
+            'password' => 'required|string',
+        ], $this->validationError() );
+    }
+
+    public function validationError()
+    {
+        return [
+            $this->username(). '.exists' => 'The selected email is invalid or you need to activate your account'
+        ];
+    }
 
 }
