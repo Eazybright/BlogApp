@@ -4,8 +4,8 @@
 
 @section('content')
     <section class="form-simple">
-        @include('partials._messages')
         <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5 text-center font-weight-bold" >Login</h3>
+        @include('partials._messages')
         <hr>
         @if (session('status'))
             <div class="alert alert-success">
