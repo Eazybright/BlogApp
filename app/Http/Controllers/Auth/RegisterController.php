@@ -95,8 +95,11 @@ class RegisterController extends Controller
             $this->guard()->logout();
 
             return redirect()->route('login')->with('success', 'Registered!. Please check your email to activate your account.');
+        }else{
+            return redirect()->route('login')->with('success', 'We are sorry we couldn\'t activate your account at the moment. 
+                our technical team is currently work on it. Please check back later');
         }
-        return redirect()->route('login')->with('success', 'We are sorry we couldn\'t activate your account at the moment. our technical team is currently work on it. Please check back later');
+        
     }    
 
 }
