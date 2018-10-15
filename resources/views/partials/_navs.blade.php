@@ -31,7 +31,7 @@
                         <a class="nav-link" href="/contact">Contact</a>
                     </li>
                     <li class="nav-item {{ Request::is('About') ? "active" : "" }}">
-                        <a class="nav-link" href="/about">About</a>
+                        <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
 
