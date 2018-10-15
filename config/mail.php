@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'noreply@eazybright.com'),
-        'name' => env('MAIL_FROM_NAME', 'Eazybright'),
+        'address' => env('MAIL_FROM_ADDRESS', 'noreply@BlogApp.com'),
+        'name' => env('MAIL_FROM_NAME', 'BlogApp'),
     ],
 
     /*
