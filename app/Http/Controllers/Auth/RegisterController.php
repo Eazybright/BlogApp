@@ -94,7 +94,7 @@ class RegisterController extends Controller
         
         $this->guard()->logout();
 
-        return view('auth/loginResend')->with('success', 'Registered!. Please check your email to activate your account.');
+        return view('login')->with('success', 'Registered!. Please check your email to activate your account.');
     }    
 
 }
