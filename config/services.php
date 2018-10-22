@@ -40,8 +40,8 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '303004613826656',
-        'client_secret' => 'a3615c834ed00fea0b91a04e8c49c558',
+        'client_id' => '313918689159011',
+        'client_secret' => '309b9ffe243d65daf663eee66b9bdd8a',
         'redirect' => 'https://eazyblog.herokuapp.com/redirect',
       ],
 
