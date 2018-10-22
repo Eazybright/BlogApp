@@ -69,7 +69,7 @@
                         <a class="btn btn-link nav-link" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
-                        <a href="{{ url('/redirect')}}" class="btn btn-primary"><i class="fa fa-facebook"></i>  Login with Facebook</a>
+                        {{-- <a href="{{ url('/redirect')}}" class="btn btn-primary"><i class="fa fa-facebook"></i>  Login with Facebook</a> --}}
                     </div>
                 </div>
                        

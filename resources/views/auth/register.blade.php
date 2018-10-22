@@ -75,7 +75,7 @@
                         <button type="submit" class="btn btn-primary">
                             {{ __('Register') }}
                         </button>
-                        <a href="{{ url('/redirect')}}" class="btn btn-primary"><i class="fa fa-facebook"></i>  Sign Up with Facebook</a>
+                        {{-- <a href="{{ url('/redirect')}}" class="btn btn-primary"><i class="fa fa-facebook"></i>  Sign Up with Facebook</a> --}}
                     </div>
                 </div>
                 
