@@ -10,17 +10,16 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('send_test_email', function(){
-	Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message)
-	{
-		$message->to('doneazy911@gmail.com');
-	});
-});
 
 Route::group(['middleware' => 'web'], function(){
     //facebook authentication route
-    // Route::get('login/facebook', 'Auth\AuthController@redirectToFacebook');
-    // Route::get('login/facebook/callback', 'Auth\AuthController@getFacebookCallback');
+    // Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
+    // Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');
+    Route::get('/redirect', 'Auth\SocialAuthFacebookController@redirect')->name('redirect');
+    Route::get('/callback', 'Auth\SocialAuthFacebookController@callback')->name('callback');
+    // Route::get('auth/callback/{provider}', 'SocialAuthController@callback');
+    // Route::get('auth/redirect/{provider}', 'SocialAuthController@redirect');
+
 
     //blog routes
     Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');

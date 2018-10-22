@@ -34,8 +34,15 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+
     'sendgrid' => [
         'api_key' => env('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'),
     ],
+
+    'facebook' => [
+        'client_id' => '303004613826656',
+        'client_secret' => 'a3615c834ed00fea0b91a04e8c49c558',
+        'redirect' => 'http://eazyblog.herokuapp.com/redirect',
+      ],
 
 ];

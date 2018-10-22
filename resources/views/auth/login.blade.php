@@ -69,13 +69,16 @@
                         <a class="btn btn-link nav-link" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
+                        <a href="{{ url('/redirect')}}" class="btn btn-primary"><i class="fa fa-facebook"></i>  Login with Facebook</a>
                     </div>
                 </div>
+                       
             </form><br>
             <hr>
             <p class="font-small  d-flex justify-content-center">Don't have an account? 
                     <a href="{{ url('/register') }}" class="dark-grey-text font-weight-bold ml-1" style="cursor:pointer;"> Sign up</a>
                 </p>
+                
         </div>
     </section>
 @endsection

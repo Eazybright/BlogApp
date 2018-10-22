@@ -152,6 +152,7 @@ return [
         Mews\Purifier\PurifierServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         'JD\Cloudder\CloudderServiceProvider',
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -221,6 +222,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Input' => Illuminate\Support\Facades\Input::class,
         'Cloudder' => 'JD\Cloudder\Facades\Cloudder',
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];
