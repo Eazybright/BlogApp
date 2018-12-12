@@ -30,22 +30,22 @@
                 <div class="text-center">
                         <ul class="list-unstyled list-inline">
                         <li class="list-inline-item">
-                            <a href="https://www.facebook.com/eazybright12" class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="https://www.facebook.com/eazybright12" rel="noopener" target="_blank" class="btn-floating btn-sm rgba-white-slight mx-1">
                             <i class="fa fa-facebook"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://twitter.com/1Doneazy" class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="https://twitter.com/1Doneazy" rel="noopener" target="_blank" class="btn-floating btn-sm rgba-white-slight mx-1">
                             <i class="fa fa-twitter"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://plus.google.com/u/0/111098536892512906572" class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="https://plus.google.com/u/0/111098536892512906572" rel="noopener" target="_blank" class="btn-floating btn-sm rgba-white-slight mx-1">
                             <i class="fa fa-google-plus"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.linkedin.com/in/ezekiel-kolawole-237aa8b0/" class="btn-floating btn-sm rgba-white-slight mx-1">
+                            <a href="https://www.linkedin.com/in/ezekiel-kolawole-237aa8b0/" rel="noopener" target="_blank" class="btn-floating btn-sm rgba-white-slight mx-1">
                             <i class="fa fa-linkedin"></i>
                             </a>
                         </li>
