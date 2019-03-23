@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'active' => false,
+            'active' => true,
             'activation_token' => str_random(100)
         ]);
     }
@@ -91,15 +91,15 @@ class RegisterController extends Controller
     {
         //sending mail
         // event(new UserActivationEmail($user));
-        if(!event(new UserActivationEmail($user))){
-            return redirect()->route('login')->with('success', 'We are sorry we couldn\'t activate your account at the moment. 
-                our technical team is currently work on it. Please check back later');
+        // if(!event(new UserActivationEmail($user))){
+        //     return redirect()->route('login')->with('success', 'We are sorry we couldn\'t activate your account at the moment. 
+        //         our technical team is currently work on it. Please check back later');
             
-        }else{
+        // }else{
             $this->guard()->logout();
 
-            return redirect()->route('login')->with('success', 'Registered!. Please check your email to activate your account.');
-        }
+            return redirect()->route('login')->with('success', 'Registered!. Please login.');
+        // }
         
     }    
 
