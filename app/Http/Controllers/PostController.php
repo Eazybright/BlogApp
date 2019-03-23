@@ -77,16 +77,16 @@ class PostController extends Controller
 
             $image_name = $request->file('image')->getRealPath();;
 
-            \Cloudinary::config(array( 
-                "cloud_name" => "http-eazyblog-herokuapp-com", 
-                "api_key" => "642468615896558", 
-                "api_secret" => "z6_2SQ6GSjYP6sOyJbOp4GQbQNg",
-              ));
+            // \Cloudinary::config(array( 
+            //     "cloud_name" => "http-eazyblog-herokuapp-com", 
+            //     "api_key" => "642468615896558", 
+            //     "api_secret" => "z6_2SQ6GSjYP6sOyJbOp4GQbQNg",
+            //   ));
 
-            $result = \Cloudinary\Uploader::upload($image, array(
-                'public_id' => $name,
-                "use_filename" => TRUE
-            ));
+            // $result = \Cloudinary\Uploader::upload($image, array(
+            //     'public_id' => $name,
+            //     "use_filename" => TRUE
+            // ));
 
             //save to uploads directory
             $image->move(public_path("uploads"), $name);
